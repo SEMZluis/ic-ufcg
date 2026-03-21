@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+<section class="content index-box bg-green-pastel">
+    <div class="flex-container align-start">
+        <div class="col-txt">
+            <h1 class="iosevka-font-bolder dk-green-text">Tamburetando a cadeira Introdução à Computação!</h1>
+            <button class="green-btn iosevka-font-medium white-text">Veja mais a seguir!</button>
+        </div>
+        <div class="col-img">
+            <img src="{{ url_for('static', filename='images/index/computer-svgrepo-com.svg') }}" class="svg-big">
+        </div>
+    </div>
+</section>
+<div class="divider wave-1"></div>
+<section class="content index-box">
+    <div class="flex-container align-start">
+        <div class="col-img">
+            <img src="{{ url_for('static', filename='images/index/tamburete.svg') }}" class="svg-big">
+        </div>
+        <div class="col-txt">
+            <h1 class="dk-green-text">Objetivo</h1>
+            <p>
+                Olá! Seja bem vindo ao TAMBURIC. Este projeto tem como objetivo resumir o conteúdo da matéria
+                e reunir em um só lugar as ferramentas adicionais que são utilizadas ao longo da disciplina,
+                facilitando a vida do calouro!
+            </p>
+        </div>
+    </div>
+</section>
+<div class="divider wave-2"></div>
+<section class="content index-box bg-green">
+    <div>
+        <h1 class="white-text">Conteúdo</h1>
+        <div class="grid">
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/calculator.svg') }}" class="svg-small">
+                <h3>Conversor de Bases</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/ieee.svg') }}" class="svg-small">
+                <h3>Representação da Informação</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/xor.svg') }}" class="svg-small">
+                <h3>Portas Lógicas</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/bool.svg') }}" class="svg-small">
+                <h3>Álgebra de Boole</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/map.svg') }}" class="svg-small">
+                <h3>Mapa de Karnaugh</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+            <div class="grid-box">
+                <img src="{{ url_for('static', filename='images/index/circuit.svg') }}" class="svg-small">
+                <h3>Circuitos Combinacionais</h3>
+                <button class="green-btn iosevka-font-medium white-text">Clique Aqui</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

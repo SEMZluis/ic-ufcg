@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<section class="content content-column">
+    <div>
+        <div>
+            <h1 class="dk-green-text ">Conversor de Bases</h1>
+        </div>
+        <div class="format-box">
+            <div>
+                <!-- <label for="nformat">
+                    <h2 class="">Formato</h2>
+                </label> -->
+                <select id="nformat" name="nformat">
+                    <option>Sem sinal</option>
+                    <option>Com sinal, 8 bits</option>
+                    <option>Com sinal, 16 bits</option>
+                    <option>Com sinal, 32 bits</option>
+                </select>
+            </div>
+            <div class="flex-container">
+                <div>
+                    <input type="text" id="origin-input" class="google-sans-regular">
+                    <select id="base-origin">
+                        <option>Decimal</option>
+                        <option>Binário</option>
+                        <option>Hexadecimal</option>
+                        <option>Octal</option>
+                    </select>
+                </div>
+                <div class="equal-sign">
+                    <img src="{{ url_for('static', filename='images/conversor/equal.svg') }}" class="svg-smallest">
+                </div>
+                <div>
+                    <input type="text" id="destiny-input" class="google-sans-regular" readonly>
+                    <select id="base-destiny">
+                        <option>Decimal</option>
+                        <option>Binário</option>
+                        <option>Hexadecimal</option>
+                        <option>Octal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class="dk-green-text">Métodos de Conversão</h1>
+    <button class="accordion green-btn">Divisões Sucessivas</button>
+    <div style="display: none;" id="successive-division">
+        <div class="panel">
+            <p>Este método consiste em realizar a divisão inteira (do número e do quociente)
+            sucessiva pela base escolhida, até que o quociente seja menor que a base. É possível
+            somente quando a base de origem é a decimal. Leia de baixo para cima!
+            </p>
+            <div class="flex-container justify-center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dividendo</th>
+                            <th>Base</th>
+                            <th>Quociente</th>
+                            <th>Resto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="division-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
+        <h1>Notação Polinomial</h1>
+        <p>
+            A notação posicional atribui valores aos algarismos com base na sua posição, onde 
+            cada dígito é multiplicado por uma potência da base escolhida. Para converter qualquer base para decimal, 
+            somam-se esses valores ponderados.
+        </p>
+        <p id="polinomial-notation"></p>
+    </div>
+    <div>
+        <h1>Agrupamento</h1>
+        <p>
+            O agrupamento de bits é um método rápido de conversão entre bases numéricas que são potências de 2, 
+            como binário para octal (grupos de 3 bits) ou hexadecimal (grupos de 4 bits).
+        </p>
+        <p id="grouping"></p>
+    </div> -->
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/conversoes/main.js') }}" type="module"></script>
+<script src="{{ url_for('static', filename='js/conversoes/accordion.js') }}" type="module"></script>
+{% endblock %}
