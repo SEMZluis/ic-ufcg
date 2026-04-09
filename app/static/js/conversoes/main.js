@@ -1,4 +1,4 @@
-import {updateSuccessiveDivision} from "./updates.js";
+import {updatePolinomialNotation, updateSuccessiveDivision} from "./updates.js";
 
 const originInput = document.getElementById("origin-input")
 const destinyInput = document.getElementById("destiny-input")
@@ -37,7 +37,6 @@ function twosComplementRepresentation(value, n) {
 
 function convert() {
     let decimalValue = parseInt(originInput.value, bases_dict[baseOrigin.value])
-    let isWrong = false
     let finalValue = ""
 
     if (format.value != "Sem sinal") {
@@ -45,26 +44,26 @@ function convert() {
         
         if (isOverflow(decimalValue, nbits)) {
             finalValue = "Overflow"
-            isWrong = true
         } else if (isUnderflow(decimalValue, nbits)) {
             finalValue = "Underflow"
-            isWrong = true
         } else {
             let c2 = twosComplementRepresentation(decimalValue, nbits)            
-            decimalValue = parseInt(c2.slice(c2.length - nbits, c2.length), 2)         
+            decimalValue = parseInt(c2.slice(c2.length - nbits, c2.length), 2)   
+            finalValue = decimalValue.toString(bases_dict[baseDestiny.value])      
         }
-    }
-
-    if (!isWrong) {
+    } else {
         finalValue = decimalValue.toString(bases_dict[baseDestiny.value])
     }
-    
+
     destinyInput.value = finalValue
 
-    if (baseOrigin.value == "Decimal" && decimalValue > 0) {
+    if (baseOrigin.value == "Decimal" && decimalValue > 0 && baseDestiny.value != baseOrigin.value) {
         updateSuccessiveDivision(true, decimalValue, bases_dict[baseDestiny.value])
+    } else if (baseOrigin.value != "Decimal" && baseDestiny.value == "Decimal") {
+        updatePolinomialNotation(true, originInput.value, decimalValue, bases_dict[baseOrigin.value])
     } else {
         updateSuccessiveDivision()
+        updatePolinomialNotation()
     }
 
 }
