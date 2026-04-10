@@ -258,6 +258,15 @@ tr {
     border: 1px solid #ddd;
 }
 
+#bit-grouping table {
+    width: fit-content;
+    border-collapse: separate;
+}
+
+#bit-grouping table td {
+    border: 1px solid #ddd;
+}
+
 /* ===== CONVERSOR DE BASES ===== */
 
 .equal-sign {

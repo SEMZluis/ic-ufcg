@@ -1,44 +1,58 @@
 const sdmethod = document.getElementById("successive-division")
 const pnmethod = document.getElementById("polinomial-notation")
+const bgmethod = document.getElementById("bit-grouping")
 const infos = document.getElementsByClassName("info")
 
-export function updatePolinomialNotation(show=false, inputValue=0, finalValue= 0, base=0) {
-    const expression = document.getElementById("expression")
-    expression.innerHTML = ""
+export function updateBitGrouping(show=false, value=0, base=0) {
+    const tablebody = document.getElementById("bit-table")
+    tablebody.innerHTML = ""
+    let binary = value.toString(2)
+    let bitGroup = base == 8 ? 3 : 4
 
-    if (show && !isNaN(finalValue)) {
-        let linha = ""
-        let n = inputValue.length
+    if (show && !isNaN(value)) {
+        let proximoMultiplo = Math.ceil(binary.length/bitGroup) * bitGroup
+        binary = binary.padStart(proximoMultiplo, "0")
 
-        linha = `<b>${finalValue}</b> =`
-
-        for (let i = n-1; i > -1; i--) {
-            linha +=  ` ${inputValue[i]}x${base}^${i}`
-
-            if (i != 0) {
-                linha += " +"
-            }
+        let groups = []
+        for (let i = 0; i < binary.length; i += bitGroup) {
+            groups.push(binary.slice(i, i+bitGroup))
         }
 
-        console.log(linha)
+        let firstRow = document.createElement('tr')
+        let firstCell = document.createElement('td')
+        firstRow.appendChild(firstCell)
+        firstCell.innerHTML = "Grupos"
 
-        expression.innerHTML = linha
-        pnmethod.style.display = "block"
-        infos[1].innerHTML = ""
+        let secondRow = document.createElement('tr')
+        let secondCell = document.createElement('td')
+        secondRow.appendChild(secondCell)
+        secondCell.innerHTML = bitGroup == 3 ? "Octal" : "Hexa"
+
+        for (let g = 0; g < groups.length; g++) {
+            let bin = document.createElement('td')
+            bin.innerHTML = groups[g]
+            firstRow.appendChild(bin)
+
+            let oct = document.createElement('td')
+            oct.innerHTML = parseInt(groups[g], 2).toString(base)
+            secondRow.appendChild(oct)
+        }
+
+        tablebody.appendChild(firstRow)
+        tablebody.appendChild(secondRow)
+        bgmethod.style.display = "block"
+        infos[2].innerHTML = ""
     } else {
-        pnmethod.style.display = "none"
-        infos[1].innerHTML = "<p>Aplica-se somente quando a base a ser convertida é <b>qualquer uma sem ser a decimal</b>, enquanto que a base desejada é <b>decimal</b>.</p>"
+        bgmethod.style.display = "none"
+        infos[2].innerHTML = "<p>Aplica-se somente quando a base a ser convertida é <b>octal ou hexadecimal</b> e a base final é <b>binária</b>.</p>"
     }
-
-
-
 }
 
 export function updateSuccessiveDivision(show=false, value=0, base=0) {
     const tablebody = document.getElementById("division-table")
     tablebody.innerHTML = ""
 
-    console.log(value)
+    // console.log(value)
 
     if (show && !isNaN(value)) {
         let dividendos = [value]
@@ -68,6 +82,7 @@ export function updateSuccessiveDivision(show=false, value=0, base=0) {
             let c4 = document.createElement('td')
             c4.innerHTML = restos[i]
             tr.appendChild(c4)
+
             tablebody.appendChild(tr)
         }
 
@@ -76,5 +91,34 @@ export function updateSuccessiveDivision(show=false, value=0, base=0) {
     } else {
         sdmethod.style.display = "none"
         infos[0].innerHTML = "<p>Aplica-se somente quando a base a ser convertida é <b>decimal</b> e a base final é <b>qualquer outra</b>.</p>"
+    }
+}
+
+export function updatePolinomialNotation(show=false, inputValue=0, finalValue= 0, base=0) {
+    const expression = document.getElementById("expression")
+    expression.innerHTML = ""
+
+    if (show && !isNaN(finalValue)) {
+        let linha = ""
+        let n = inputValue.length
+
+        linha = `<b>${finalValue}</b> =`
+
+        for (let i = n-1; i > -1; i--) {
+            linha +=  ` ${inputValue[i]}x${base}^${i}`
+
+            if (i != 0) {
+                linha += " +"
+            }
+        }
+
+        // console.log(linha)
+
+        expression.innerHTML = linha
+        pnmethod.style.display = "block"
+        infos[1].innerHTML = ""
+    } else {
+        pnmethod.style.display = "none"
+        infos[1].innerHTML = "<p>Aplica-se somente quando a base a ser convertida é <b>qualquer uma sem ser a decimal</b>, enquanto que a base desejada é <b>decimal</b>.</p>"
     }
 }

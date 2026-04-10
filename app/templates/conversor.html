@@ -84,14 +84,24 @@
         </div>
         <div class="info"></div>
     </div>
-    <!-- <div>
-        <h1>Agrupamento</h1>
+    <button class="accordion green-btn">Agrupamento</button>
+    <div class="panel">
         <p>
             O agrupamento de bits é um método rápido de conversão entre bases numéricas que são potências de 2, 
-            como binário para octal (grupos de 3 bits) ou hexadecimal (grupos de 4 bits).
+            como binário para octal (grupos de 3 bits) ou hexadecimal (grupos de 4 bits). Desse modo, se o número
+            em binário não é divisível por 3 ou por 4, é necessário colocar números à esquerda do número para que
+            a conversão aconteça.
         </p>
-        <p id="grouping"></p>
-    </div>  -->
+        <div id="bit-grouping">
+            <div class="flex-container justify-center">
+                <table>
+                    <tbody id="bit-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="info"></div>
+    </div> 
 </section>
 {% endblock %}
 
