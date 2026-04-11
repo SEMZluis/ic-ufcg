@@ -7,8 +7,6 @@ export function updateSuccessiveDivision(show=false, value=0, base=0) {
     const tablebody = document.getElementById("division-table")
     tablebody.innerHTML = ""
 
-    // console.log(value)
-
     if (show && !isNaN(value)) {
         let dividendos = [value]
         let quocientes = []
