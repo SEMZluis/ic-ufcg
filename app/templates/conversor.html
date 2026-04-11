@@ -68,7 +68,7 @@
                 </table>
             </div>
         </div>
-        <div class="info"></div>
+        <div class="info"><p>Aplica-se somente quando a base a ser convertida é <b>decimal</b> e a base final é <b>qualquer outra</b>.</p></div>
     </div>
     <button class="accordion green-btn">Notação Polinomial</button>
     <div class="panel">
@@ -82,17 +82,17 @@
             <p>Utilizando o exemplo fornecido: </p>
             <p id="expression"></p>
         </div>
-        <div class="info"></div>
+        <div class="info"><p>Aplica-se somente quando a base a ser convertida é <b>qualquer uma sem ser a decimal</b>, enquanto que a base desejada é <b>decimal</b>.</p></div>
     </div>
     <button class="accordion green-btn">Agrupamento</button>
     <div class="panel">
-        <p>
-            O agrupamento de bits é um método rápido de conversão entre bases numéricas que são potências de 2, 
-            como binário para octal (grupos de 3 bits) ou hexadecimal (grupos de 4 bits). Desse modo, se o número
-            em binário não é divisível por 3 ou por 4, é necessário colocar números à esquerda do número para que
-            a conversão aconteça.
-        </p>
-        <div id="bit-grouping">
+        <div id="bit-grouping" style="display: none;">
+            <p>
+                O agrupamento de bits é um método rápido de conversão entre bases numéricas que são potências de 2, 
+                como binário para octal (grupos de 3 bits) ou hexadecimal (grupos de 4 bits). Desse modo, se o número
+                em binário não é divisível por 3 ou por 4, é necessário colocar números à esquerda do número para que
+                a conversão aconteça.
+            </p>
             <div class="flex-container justify-center">
                 <table>
                     <tbody id="bit-table">
@@ -100,7 +100,7 @@
                 </table>
             </div>
         </div>
-        <div class="info"></div>
+        <div class="info"><p>Aplica-se somente quando a base a ser convertida é <b>octal ou hexadecimal</b> e a base final é <b>binária</b>.</p></div>
     </div> 
 </section>
 {% endblock %}
