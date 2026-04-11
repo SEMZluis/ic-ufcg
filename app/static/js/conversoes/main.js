@@ -57,12 +57,23 @@ function convert() {
 
     destinyInput.value = finalValue
 
-    if (baseOrigin.value == "Decimal" && decimalValue > 0 && baseDestiny.value != baseOrigin.value) {
-        updateSuccessiveDivision(true, decimalValue, bases_dict[baseDestiny.value])
-    } else if (baseOrigin.value != "Decimal" && baseDestiny.value == "Decimal") {
-        updatePolinomialNotation(true, originInput.value, decimalValue, bases_dict[baseOrigin.value])
-    } else if (baseOrigin.value == "Binário" && (baseDestiny.value == "Hexadecimal" || baseDestiny.value == "Octal")) {
-        updateBitGrouping(true, decimalValue, bases_dict[baseDestiny.value])
+    if (baseOrigin.value != baseDestiny.value) {
+        if (baseOrigin.value == "Decimal") {
+            updateSuccessiveDivision(true, decimalValue, bases_dict[baseDestiny.value])    
+            updatePolinomialNotation()
+            updateBitGrouping()
+        } else {
+            if (baseDestiny.value == "Decimal") {
+                updatePolinomialNotation(true, decimalValue, bases_dict[baseOrigin.value])
+                updateSuccessiveDivision()
+                updateBitGrouping()
+            } else{
+                updateBitGrouping(true, decimalValue, bases_dict[baseOrigin.value], bases_dict[baseDestiny.value])
+                updateSuccessiveDivision()
+                updatePolinomialNotation()
+            }
+        }
+        
     } else {
         updateSuccessiveDivision()
         updatePolinomialNotation()

@@ -299,7 +299,7 @@ tr {
 }
 
 .panel {
-    padding: 0 18px;
+    padding: 18px 18px;
     background-color: white;
     display: none;
     overflow: hidden;
