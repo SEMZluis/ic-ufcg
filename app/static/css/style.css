@@ -1,4 +1,36 @@
-/* ===== CONFIGURAÇÕES GERAIS E DE TEXTO ===== */
+/* ===== VARIÁVEIS E CORES ===== */
+
+:root {
+    --primary-color: #5ec57e;
+    --secondary-color: #347571;
+    --terciary-color:  #ecf8e5;
+    --warning: #ffc107;
+    --border-color: #dddddd;
+    --light-color: #ffffff;
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-terciary {
+    background-color: var(--terciary-color);
+}
+
+.white-text {
+    color: white;
+}
+
+
+/* ===== CONFIGURAÇÕES GERAIS ===== */
 
 .iosevka-font-bolder {
     font-family: "Iosevka Charon", monospace;
@@ -17,13 +49,11 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings:
-        "GRAD" 0;
+    font-variation-settings: "GRAD" 0;
 }
 
 body {
     margin: 0 auto;
-    background: white;
     font-family: 'Encode Sans Semi Expanded', sans-serif;
 }
 
@@ -39,7 +69,62 @@ p {
 
 hr {
     border: none;
-    border-top: 1px solid #5ec57e;
+    border-top: 1px solid var(--primary-color);
+}
+
+/* ===== BARRA DE NAVEGAÇÃO ===== */
+
+nav {
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    box-shadow: 5px 5px 30px var(--border-color);
+}
+
+nav a {
+    margin: 0 2rem;
+    padding: 2rem 0.25rem;
+    font-size: 2em;
+    font-family: 'Encode Sans Semi Expanded', serif;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-align: center;
+    text-decoration: none;
+}
+
+/* ===== RODAPÉ ===== */
+
+footer {
+    background-color: var(--light-color);
+    text-align: center; 
+    padding: 1.5rem;
+    margin-top: auto;
+    box-shadow: 0px 0px 10px var(--border-color);
+    font-size: 0.875rem;
+}
+
+footer img {
+    height: 3.55rem;
+    width: 11rem;
+}
+
+
+/* ===== CONFIGURAÇÕES DE LAYOUT ===== */
+
+.content {
+    min-height: 80vh;
+    padding: 1em 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-column {
+    flex-direction: column;
+    justify-content: start;
 }
 
 .flex-container {
@@ -54,120 +139,97 @@ hr {
     align-items: start;
 }
 
-.white-text {
-    color: white;
+.col-txt, .col-img {
+    flex: 1;
+    padding: 10px;
 }
 
-.dk-green-text {
-    color: #347571;
+.col-txt {
+    text-align: start;
+    font-size: 30px;
+    padding: 2rem 0 0 0;
 }
 
-.green-text {
-    color: #5ec57e;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow-wrap: break-word;
+    hyphens: auto;
+    padding: 10px;
 }
 
-.bg-green-pastel {
-    background-color: #ecf8e5;
+.grid-box {
+    background-color: var(--light-color);
+    padding: 10px;
+    margin: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px var(--border-color);
 }
 
-.bg-green {
-    background-color: #5ec57e;
-}
+/* ===== BOTÕES ===== */
 
-.bg-dk-green {
-    color: #347571;
-}
-
-
-/* ===== BARRA DE NAVEGAÇÃO ===== */
-
-nav {
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 0 0.5rem;
-    box-shadow: 5px 5px 30px lightgray;
-}
-
-nav h1 {
-    flex: auto;
-    margin: 0 2rem;
-    padding: 2rem 0.25rem;
-    font-size: 2em;
-    font-family: 'Encode Sans Semi Expanded', serif;
-}
- 
-
-nav h1 a {
+.btn {
+    border-radius: 30px;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0 2rem;
-    padding: 0;
+.green-btn {
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
 }
 
-nav ul li a, nav ul li span, header .action {
-    display: block;
-    padding: 0.5rem;
+.green-btn:hover {
+    color: var(--secondary-color);
+    background-color: var(--light-color);
+    border: 1px solid var(--secondary-color);
 }
 
-/* ===== RODAPÉ ===== */
-
-footer {
-    background-color: #fff;
-    text-align: center;
-    color: #2d1d73;
-    padding: 1.5rem;
-    margin-top: auto;
-    box-shadow: 0px 0px 10px lightgray;
-    font-size: 0.875rem;
-    /* position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%; */
+.yellow-btn {
+    background-color: var(--warning);
+    border: 1px solid #000000;
 }
 
-footer img {
-    height: 3.55rem;
-    width: 11rem;
+.accordion {
+    width: 50%;
+    border-radius: 10px;
+    margin: 10px;
 }
 
-/* ===== CONTEÚDO ===== */
+/* ===== INPUTS E SELETORES ===== */
 
-.content {
-    min-height: 80vh;
-    padding: 1em 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* background-color: red; */
+input[type=text], select {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 2px 5px var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
 }
 
-.content-column {
-    flex-direction: column;
-    justify-content: start;
+input:focus {
+    outline: none;
 }
 
-/* ===== PÁGINA DE INDEX ===== */
-
-.divider {
-    aspect-ratio: 960/300;
-    background-color: no-repeat center;
-    background-size: cover;
+/* ==== TABELAS ==== */
+table {
+  border-collapse: collapse;
+  width: 50%;
 }
 
-.wave-1 {
-    background-image: url('../images/index/wave-haikei.svg');
+tr {
+    border: 1px solid var(--border-color);
 }
 
-.wave-2 {
-    background-image: url('../images/index/wave-haikei2.svg');
-}
+/* ==== SVGS ==== */
 
 .svg-big {
     height: auto;
@@ -184,87 +246,20 @@ footer img {
     width: 50px;
 }
 
-.col-txt, .col-img {
-    flex: 1;
-    padding: 10px;
+/* ===== INDEX ===== */
+
+.divider {
+    aspect-ratio: 960/300;
+    background-color: no-repeat center;
+    background-size: cover;
 }
 
-.col-txt {
-    text-align: start;
-    font-size: 30px;
-    padding: 2rem 0 0 0;
+.wave-1 {
+    background-image: url('../images/index/wave-haikei.svg');
 }
 
-.green-btn {
-    background-color: #5ec57e;
-    border-radius: 30px;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    overflow-wrap: break-word;
-    hyphens: auto;
-    /* flex-direction: row;
-    justify-content: space-between;
-    align-items: center; */
-    padding: 10px;
-}
-
-.grid-box {
-    background-color: #fff;
-    padding: 10px;
-    margin: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px gray;
-}
-
-/* ===== SELETORES E ENTRADAS ===== */
-
-input[type=text], select {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: 0px 2px 5px lightgray;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 10px;
-}
-
-input:focus {
-    outline: none;
-}
-
-#nformat {
-    width: 30%;
-}
-
-/* ==== TABELAS ==== */
-table {
-  border-collapse: collapse;
-  width: 50%;
-}
-
-tr {
-    border: 1px solid #ddd;
-}
-
-#bit-grouping table {
-    width: fit-content;
-    border-collapse: separate;
-}
-
-#bit-grouping table td {
-    border: 1px solid #ddd;
+.wave-2 {
+    background-image: url('../images/index/wave-haikei2.svg');
 }
 
 /* ===== CONVERSOR DE BASES ===== */
@@ -281,26 +276,17 @@ tr {
     border-radius: 20px;
 }
 
-.teste {
-    min-width: 100%;
-}
-
-.accordion {
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 100%;
-    margin: auto;
-}
-
-.accordion:hover {
-    background-color: #347571;
-}
-
 .panel {
     padding: 18px 18px;
-    background-color: white;
     display: none;
     overflow: hidden;
+}
+
+#bit-grouping table {
+    width: fit-content;
+    border-collapse: separate;
+}
+
+#bit-grouping table td {
+    border: 1px solid var(--border-color);
 }
