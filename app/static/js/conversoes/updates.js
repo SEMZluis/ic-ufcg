@@ -3,11 +3,16 @@ const pnmethod = document.getElementById("polinomial-notation")
 const bgmethod = document.getElementById("bit-grouping")
 const infos = document.getElementsByClassName("info")
 
-export function updateSuccessiveDivision(show=false, value=0, base=0) {
+/**
+ * Atualiza a tabela que exemplifica a conversão de base pelo método das divisões sucessivas.
+ * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} base - Base númerica para o qual o valor digitado será convertido.
+ */
+export function updateSuccessiveDivision(value=NaN, base=0) {
     const tablebody = document.getElementById("division-table")
     tablebody.innerHTML = ""
 
-    if (show && !isNaN(value)) {
+    if (!isNaN(value)) {
         let dividendos = [value]
         let quocientes = []
         let restos = []
@@ -47,11 +52,16 @@ export function updateSuccessiveDivision(show=false, value=0, base=0) {
     }
 }
 
-export function updatePolinomialNotation(show=false, value=0, base=0) {
+/**
+ * Atualiza a expressão que exemplifica a conversão de base pelo método da notação polinomial.
+ * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} base - Base númerica para o qual o valor digitado será convertido.
+ */
+export function updatePolinomialNotation(value=NaN, base=0) {
     const expression = document.getElementById("expression")
     expression.innerHTML = ""
 
-    if (show && !isNaN(value)) {
+    if (!isNaN(value)) {
         let originalValue = value.toString(base)
         let linha = ""
         let n = originalValue.length
@@ -75,11 +85,17 @@ export function updatePolinomialNotation(show=false, value=0, base=0) {
     }
 }
 
-export function updateBitGrouping(show=false, value=0, originBase, finalBase=0) {
+/**
+ * Atualiza a tabela que exemplifica a conversão de base pelo método do agrupamento de bits.
+ * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} originBase - Base númerica de origem do número digitado.
+ * @param {number} finalBase - Base numérica desejada para a conversão do número digitado.
+ */
+export function updateBitGrouping(value=NaN, originBase=0, finalBase=0) {
     const tablebody = document.getElementById("bit-table")
     tablebody.innerHTML = ""
 
-    if (show && !isNaN(value)) {
+    if (!isNaN(value)) {
         let convertBase = originBase == 2 ? finalBase : originBase
         let bitGroup = finalBase == 8 || originBase == 8 ? 3 : 4
         let binary = value.toString(2)
