@@ -23,8 +23,13 @@ function convert() {
 
     if (decimalValue < 0) {
         destinyInput.value = "Sem valores negativos"
+        cleanUpdates()
     } else if (isNaN(decimalValue)) {
         destinyInput.value = "Digite um número válido"
+        cleanUpdates()
+    } else if (baseOrigin.value == baseDestiny.value) {
+        destinyInput.value = "Modifique uma das bases"
+        cleanUpdates()
     } else {
         let finalValue = decimalValue.toString(bases_dict[baseDestiny.value])
         destinyInput.value = finalValue
@@ -45,6 +50,15 @@ function convert() {
             }
         }
     }
+}
+
+/**
+ * "Limpa" a exibição dos métodos de conversão, apagando o que estava neles anteriormente.
+ */
+function cleanUpdates() {
+    updateSuccessiveDivision()
+    updatePolinomialNotation()
+    updateBitGrouping()
 }
 
 originInput.addEventListener("input", () => convert())

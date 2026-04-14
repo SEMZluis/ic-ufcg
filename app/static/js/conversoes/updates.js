@@ -69,7 +69,7 @@ export function updatePolinomialNotation(value=NaN, base=0) {
         linha = `<b>${value}</b> =`
 
         for (let i = 0; i < n; i++) {
-            linha +=  ` ${originalValue[i]}x${base}^${(n - (1+i))}`
+            linha +=  ` (${originalValue[i]}x${base})^${(n - (1+i))}`
 
             if (i != n - 1) {
                 linha += " +"
