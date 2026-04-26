@@ -50,6 +50,11 @@ function convert() {
         return
     }
 
+    if((bOrigin == 8 && bDestiny == 16) || (bOrigin == 16 && bDestiny == 8)) {
+        destinyInput.value = "Não é possível"
+        return
+    }
+
     if (isValid(string, bOrigin)) {
         let decimalValue = parseInt(string, bOrigin)
         let finalValue = decimalValue.toString(bDestiny)
@@ -65,7 +70,7 @@ function convert() {
             }
         }
     } else {
-        destinyInput.value = "Número inválido"
+        destinyInput.value = "Numeral inválido"
     }
 }
 
