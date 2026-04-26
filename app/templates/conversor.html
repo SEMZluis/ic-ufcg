@@ -6,8 +6,8 @@
     <section class="content flex-column">
         <div>
             <h1 class="secondary-color ">Conversor de Bases</h1>
-            <div class="conversor-box flex-container">
-                <div>
+            <div class="conversor-container flex-container">
+                <div class="conversor-box">
                     <input type="text" id="origin-input" class="google-sans-regular" placeholder="Digite um número válido">
                     <select id="base-origin">
                         <option>Decimal</option>
@@ -19,7 +19,7 @@
                 <div class="equal-sign">
                     <img src="{{ url_for('static', filename='images/conversor/equal.svg') }}" class="svg-smallest">
                 </div>
-                <div>
+                <div class="conversor-box">
                     <input type="text" id="destiny-input" class="google-sans-regular" readonly placeholder="E ele será convertido.">
                     <select id="base-destiny">
                         <option>Decimal</option>

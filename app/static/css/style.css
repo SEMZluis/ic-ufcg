@@ -274,7 +274,7 @@ tr {
     margin: 10px 10px;
 }
 
-.conversor-box {
+.conversor-container {
     padding: 1rem 10%;
     border-radius: 20px;
 }
@@ -335,8 +335,22 @@ tr {
         flex-direction: column;
     }
 
+    .conversor-container {
+        padding: 0;
+        flex-direction: column;
+    }
+
     .conversor-box {
-        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .conversor-box select {
+        max-width: 35%;
+    }
+
+    .conversor-box input {
+        margin-right: 10px;
     }
 
     .panel {
@@ -354,6 +368,10 @@ tr {
 
     .seeMore {
         display: block;
+    }
+
+    .equal-sign {
+        display: none;
     }
 }
 
@@ -397,7 +415,7 @@ tr {
         flex-direction: column;
     }
 
-    .conversor-box {
+    .conversor-container {
         max-width: 100%;
     }
 
