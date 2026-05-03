@@ -5,6 +5,16 @@
     {% block content %}
     <section class="content flex-column">
         <div>
+            <h1 class="secondary-color">Guia de Conversões</h1>
+            <img src="{{ url_for('static', filename='images/conversor/conversoespossiveis.png')}}" alt="Imagem com guia para conversões." id="conversor-guide-img"/>
+            <div id="conversor-guide-text">
+                <p><b>Decimal</b> → <b>Divisões Sucessivas</b> → <b>Qualquer base</b>.</p>
+                <p><b>Qualquer base</b> → <b>Notação Polinomial</b> → <b>Decimal</b>.</p>
+                <p><b>Binário</b> → <b>Agrupamento</b> → <b>Hexadecimal ou Octal</b>.</p>
+                <p><b>Hexadecimal ou Octal</b> → <b>Desagrupamento</b> → <b>Binário</b>.</p>
+            </div>
+        </div>
+        <div>
             <h1 class="secondary-color ">Conversor de Bases</h1>
             <div class="conversor-container flex-container">
                 <div class="conversor-box">
@@ -17,7 +27,7 @@
                     </select>
                 </div>
                 <div class="equal-sign">
-                    <img src="{{ url_for('static', filename='images/conversor/equal.svg') }}" class="svg-smallest">
+                    <img src="{{ url_for('static', filename='images/conversor/equal.svg') }}" class="svg-smallest" alt="Símbolo de igualdade.">
                 </div>
                 <div class="conversor-box">
                     <input type="text" id="destiny-input" class="google-sans-regular" readonly placeholder="E ele será convertido.">
@@ -63,7 +73,7 @@
                     cada dígito é multiplicado por uma potência da base escolhida. Para converter qualquer base para decimal, 
                     somam-se esses valores ponderados. Isso pode ser visto em detalhes pela fórmula a seguir.
                 </p>
-                <img src="{{ url_for('static', filename='images/conversor/formulanotacao.png') }}" alt="" id="notation-img">
+                <img src="{{ url_for('static', filename='images/conversor/formulanotacao.png') }}" alt="Fórmula da notação polinomial" id="notation-img">
                 <p>Utilizando o exemplo fornecido: </p>
                 <p id="expression"></p>
             </div>

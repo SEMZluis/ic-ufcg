@@ -295,6 +295,15 @@ tr {
     border: 1px solid var(--border-color);
 }
 
+#conversor-guide-img {
+    height: auto;
+    max-width: 650px;
+}
+
+#conversor-guide-text {
+    display: none;
+}
+
 /* ===== RESPONSIVIDADE ===== */
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -360,6 +369,14 @@ tr {
     #notation-img {
         height: auto;
         max-width: 300px;
+    }
+
+    #conversor-guide-img {
+        display: none;
+    }
+
+    #conversor-guide-text {
+        display: block;
     }
 
     .svg-smallest {
