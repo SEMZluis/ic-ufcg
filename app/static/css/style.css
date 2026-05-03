@@ -60,7 +60,7 @@ body {
 
 h1 {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 3.75rem; 
+    font-size: 3rem; 
 }
 
 a {
@@ -300,10 +300,6 @@ tr {
     max-width: 650px;
 }
 
-#conversor-guide-text {
-    display: none;
-}
-
 /* ===== RESPONSIVIDADE ===== */
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -313,7 +309,7 @@ tr {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         margin: 2rem;
     }
 
@@ -372,11 +368,8 @@ tr {
     }
 
     #conversor-guide-img {
-        display: none;
-    }
-
-    #conversor-guide-text {
-        display: block;
+        height: auto;
+        max-width: 320px;
     }
 
     .svg-smallest {
@@ -399,7 +392,7 @@ tr {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     p {
