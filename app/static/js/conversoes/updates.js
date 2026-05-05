@@ -5,26 +5,29 @@ const infos = document.getElementsByClassName("info")
 
 /**
  * Atualiza a tabela que exemplifica a conversão de base pelo método das divisões sucessivas.
- * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} decimalValue - Valor em decimal do número digitado.
  * @param {number} base - Base númerica para o qual o valor digitado será convertido.
  */
-export function updateSuccessiveDivision(value=NaN, base=0) {
+export function updateSuccessiveDivision(decimalValue=NaN, base=0) {
     const tablebody = document.getElementById("division-table")
-    tablebody.innerHTML = ""
+    tablebody.innerHTML = ""                                                    // Limpa a tabela
 
-    if (!isNaN(value)) {
-        let dividendos = [value]
+    if (!isNaN(decimalValue)) {
+        // Separa as informações que serão exibidas em arrays
+        let dividendos = [decimalValue]
         let quocientes = []
         let restos = []
 
+        // Calcula os quocientes, restos e dividendos que devem ser exibidos na tabela
         do {
             quocientes.push(Math.floor(dividendos[dividendos.length-1]/base))
             restos.push(Math.floor(dividendos[dividendos.length-1]%base))
             dividendos.push(quocientes[quocientes.length - 1])
         } while (quocientes[quocientes.length-1] != 0);
 
-        dividendos.pop()
+        dividendos.pop() // Remove o último dividendo adicionado, visto que ele será 0 na última divisão
 
+        // Preenche a tabela com as informações calculadas
         for (let i = 0; i < dividendos.length; i++) {
             let tr = document.createElement('tr')
             
@@ -44,6 +47,7 @@ export function updateSuccessiveDivision(value=NaN, base=0) {
             tablebody.appendChild(tr)
         }
 
+        // Exibe a tabela
         infos[0].innerHTML = ""
         sdmethod.style.display = "block"
     } else {
@@ -54,28 +58,27 @@ export function updateSuccessiveDivision(value=NaN, base=0) {
 
 /**
  * Atualiza a expressão que exemplifica a conversão de base pelo método da notação polinomial.
- * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} decimalValue - Valor em decimal do número digitado.
  * @param {number} base - Base númerica para o qual o valor digitado será convertido.
  */
-export function updatePolinomialNotation(value=NaN, base=0) {
+export function updatePolinomialNotation(decimalValue=NaN, base=0) {
     const expression = document.getElementById("expression")
-    expression.innerHTML = ""
+    expression.innerHTML = ""                                               // Limpa a linha
 
-    if (!isNaN(value)) {
-        let originalValue = value.toString(base)
-        let linha = ""
-        let n = originalValue.length
+    if (!isNaN(decimalValue)) {
+        let originalValue = decimalValue.toString(base)                     // Armazena o valor original
+        let tam = originalValue.length                                      // Armazena o tamanho da string do valor original
+        let linha = `<b>${decimalValue}</b> =`                              // Declara a linha que será exibida com o valor final da conversão
+        
+        // Preenche a linha substituindo as variáveis da fórmula da notação polinomial por valores reais
+        let i = 0                                                       
+        do {
+            linha +=  ` (${originalValue[i]}x${base})^${(tam - (1+i))} +`
+            i += 1
+        } while (i < tam-1);
+        linha += ` (${originalValue[i]}x${base})^${(tam - (1+i))}`
 
-        linha = `<b>${value}</b> =`
-
-        for (let i = 0; i < n; i++) {
-            linha +=  ` (${originalValue[i]}x${base})^${(n - (1+i))}`
-
-            if (i != n - 1) {
-                linha += " +"
-            }
-        }
-
+        // Exibe a linha
         expression.innerHTML = linha
         pnmethod.style.display = "block"
         infos[1].innerHTML = ""
@@ -87,34 +90,36 @@ export function updatePolinomialNotation(value=NaN, base=0) {
 
 /**
  * Atualiza a tabela que exemplifica a conversão de base pelo método do agrupamento de bits.
- * @param {number} value - Valor em decimal do número digitado.
+ * @param {number} decimalValue - Valor em decimal do número digitado.
  * @param {number} originBase - Base númerica de origem do número digitado.
  * @param {number} finalBase - Base numérica desejada para a conversão do número digitado.
  */
-export function updateBitGrouping(value=NaN, originBase=0, finalBase=0) {
+export function updateBitGrouping(decimalValue=NaN, originBase=0, finalBase=0) {
     const tablebody = document.getElementById("bit-table")
-    tablebody.innerHTML = ""
+    tablebody.innerHTML = ""                                                   // Limpa a tabela
 
-    if (!isNaN(value)) {
-        let convertBase = originBase == 2 ? finalBase : originBase
-        let bitGroup = finalBase == 8 || originBase == 8 ? 3 : 4
-        let binary = value.toString(2)
-        let proximoMultiplo = Math.ceil(binary.length/bitGroup) * bitGroup
-        binary = binary.padStart(proximoMultiplo, "0")
+    if (!isNaN(decimalValue)) {
+        let octOrhex = originBase == 2 ? finalBase : originBase                // Armazena a base não-binária da conversão
+        let bitGroup = finalBase == 8 || originBase == 8 ? 3 : 4               // Determina qual deve ser o tamanho do grupo de bits
+        let binary = decimalValue.toString(2)                                  // Armazena o binário do número convertido
+        let proximoMultiplo = Math.ceil(binary.length/bitGroup) * bitGroup     // Determina o tamanho máximo de bits a partir do tamanho do grupo e do binário disponibilizado
+        binary = binary.padStart(proximoMultiplo, "0")                         // "Corrige" o binário adicionadno zeros no inicio caso seja necessário
 
         let groups = []
         let digits = []
-
+        
+        // Preenche os arrays conforme eles são grupos de bits ou algarismos da base octal ou hexadecimal
         for (let i = 0; i < binary.length; i += bitGroup) {
             let group = document.createElement('td')
             group.innerHTML = binary.slice(i, i+bitGroup)
             groups.push(group)
 
             let digit = document.createElement('td')
-            digit.innerHTML = parseInt(group.innerHTML, 2).toString(convertBase)
+            digit.innerHTML = parseInt(group.innerHTML, 2).toString(octOrhex)
             digits.push(digit)
         }
 
+        // Inicializa as linhas que receberão os valores dos arrays
         let firstRow = document.createElement('tr')
         let firstCell = document.createElement('td')
         firstRow.appendChild(firstCell)
@@ -125,6 +130,8 @@ export function updateBitGrouping(value=NaN, originBase=0, finalBase=0) {
         let firstArray = []
         let secondArray = []
 
+        // Determina em qual ordem os algarismos e os seus respectivos grupos de bits devem aparecer
+        // conforme a base de origem.
         if (originBase != 2) {
             firstArray = digits
             secondArray = groups
@@ -142,6 +149,7 @@ export function updateBitGrouping(value=NaN, originBase=0, finalBase=0) {
             secondRow.appendChild(secondArray[i])
         }
 
+        // Exibe a tabela com as informações da conversão
         tablebody.appendChild(firstRow)
         tablebody.appendChild(secondRow)
         bgmethod.style.display = "block"
