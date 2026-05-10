@@ -13,6 +13,10 @@
     color: var(--secondary-color);
 }
 
+.primary-color {
+    color: var(--primary-color);
+}
+
 .bg-primary {
     background-color: var(--primary-color);
 }
@@ -63,6 +67,11 @@ h1 {
     font-size: 3rem; 
 }
 
+h2 {
+    font-size: 1rem;
+    margin: 2rem 0;
+}
+
 a {
     text-decoration: none;
 }
@@ -77,20 +86,34 @@ hr {
 nav {
     background-color: var(--light-color);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0 0.5rem;
     box-shadow: 5px 5px 30px var(--border-color);
 }
 
 nav a {
-    margin: 0 2rem;
-    padding: 2rem 0.25rem;
     font-size: 2em;
     font-family: 'Encode Sans Semi Expanded', serif;
     font-weight: 700;
     color: var(--secondary-color);
     text-align: center;
+}
+
+nav div {
+    margin: 0 2rem;
+    padding: 2rem 0.25rem;
+}
+
+.nav-items a {
+    font-size: 1.5rem;
+    color: var(--primary-color)
+}
+
+.nav-items a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* ===== RODAPÉ ===== */
@@ -253,9 +276,9 @@ tr {
     background-size: cover;
 }
 
-.wave-1 {
+/* .wave-1 {
     background-image: url('../images/index/wave-haikei.svg');
-}
+} */
 
 .wave-2 {
     background-image: url('../images/index/wave-haikei2.svg');
@@ -309,8 +332,12 @@ tr {
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         margin: 2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
     }
 
     p {

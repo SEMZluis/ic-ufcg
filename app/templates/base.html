@@ -14,9 +14,16 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">
-            TAMBURIC
-        </a>
+        <div id="logo">
+            <a href="{{ url_for('index') }}">
+                TAMBURIC
+            </a>
+        </div>
+        <div class="nav-items">
+            <a href="{{ url_for('index', _anchor='menu') }}">
+                Menu
+            </a>
+        </div>
     </nav>
     <main>
        {% block content %}{% endblock %}
@@ -26,6 +33,7 @@
             <img src="{{ url_for('static', filename='images/ufcg_logo.png') }}" alt="">
         </p>
         <p>Introdução à Computação © 2026 UFCG</p>
+        <p>Desenvolvido pelo discente <a href="https://www.github.com/SEMZluis">Luís Henrique</a></p>
     </footer>
     {% block scripts %}{% endblock %}
 </body>
