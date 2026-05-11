@@ -334,6 +334,15 @@ tr {
         font-size: 2em;
     }
 
+    .nav-items a{
+        font-size: 1.25em;
+    }
+
+    nav div {
+        margin: 0;
+        padding: 1rem;
+    }
+
     h1 {
         font-size: 1.75rem;
         margin: 2rem;
