@@ -53,7 +53,9 @@
             <div class="grid-box">
                 <img src="{{ url_for('static', filename='images/index/ieee.svg') }}" class="svg-small">
                 <h3>Representação da Informação</h3>
-                <button class="yellow-btn btn iosevka-font-medium" disabled>Em Produção!</button>
+                <a href="{{ url_for('representacoes') }}">
+                    <button class="green-btn btn iosevka-font-medium">Clique Aqui</button>
+                </a>
             </div>
             <div class="grid-box">
                 <img src="{{ url_for('static', filename='images/index/xor.svg') }}" class="svg-small">

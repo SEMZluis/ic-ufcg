@@ -10,3 +10,7 @@ def index():
 @app.route('/conversor-de-bases')
 def conversor():
     return render_template('conversor.html')
+
+@app.route('/conversor-de-representacoes')
+def representacoes():
+    return render_template('representacoes.html')

@@ -149,6 +149,10 @@ footer img {
     flex-direction: column;
 }
 
+.fit-content-width {
+    width: fit-content;
+}
+
 .flex-container {
     display: flex;
 }
@@ -224,7 +228,6 @@ input[type=text], select {
 input:focus {
     outline: none;
 }
-
 /* ==== TABELAS E GRIDS ==== */
 table {
   border-collapse: separate;

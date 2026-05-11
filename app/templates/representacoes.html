@@ -1,0 +1,45 @@
+    {% extends 'base.html' %}
+
+    {% block header %}{% endblock %}
+
+    {% block content %}
+    <section class="content flex-column">
+        <div>
+            <h1 class="secondary-color">Representação de Inteiros</h1>
+            <div class="flex-container justify-center">
+                <div>
+                    <select id="int-representation">
+                        <option>Sinal e Magnitude</option>
+                        <option>Notação em Excesso</option>
+                        <option>Complemento de 1</option>
+                        <option>Complemento de 2</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+            <div class="conversor-container flex-container justify-center">
+                <div class="conversor-box">
+                    <input type="text" id="origin-input" class="google-sans-regular" placeholder="Decimal">
+                </div>
+                <div class="equal-sign">
+                    <img src="{{ url_for('static', filename='images/conversor/equal.svg') }}" class="svg-smallest" alt="Símbolo de igualdade.">
+                </div>
+                <div class="conversor-box">
+                    <input type="text" id="destiny-input" class="google-sans-regular" readonly placeholder="Binário correspondente.">
+                </div>
+            </div>
+            <button class="accordion btn green-btn">Explicação</button>
+            <div class="panel">
+                <button class="accordion yellow-btn btn iosevka-font-medium" disabled>Em Produção!</button>
+            </div>
+        <div>
+            <h1 class="secondary-color ">Representação de Reais</h1>
+            <button class="yellow-btn btn iosevka-font-medium" disabled>Em Produção!</button>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/representacoes/main.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='js/accordion.js') }}" type="module"></script>
+    {% endblock %}
