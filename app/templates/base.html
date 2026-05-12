@@ -14,15 +14,21 @@
 </head>
 <body>
     <nav>
+        <ul>
+            <li id="logo">
+                <a href="{{ url_for('index') }}">
+                    TAMBURIC
+                </a>
+            </li>
+            <li id="nav-items">
+                <a href="{{ url_for('index', _anchor='menu') }}">
+                    Menu
+                </a>
+            </li>
+        </ul>
         <div id="logo">
-            <a href="{{ url_for('index') }}">
-                TAMBURIC
-            </a>
         </div>
         <div class="nav-items">
-            <a href="{{ url_for('index', _anchor='menu') }}">
-                Menu
-            </a>
         </div>
     </nav>
     <main>
